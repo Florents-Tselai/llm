@@ -26,7 +26,7 @@ def log_path(user_path):
     log_path = str(user_path / "logs.db")
     db = sqlite_utils.Database(log_path)
     migrate(db)
-    start = datetime.datetime.utcnow()
+    start = datetime.datetime.now(datetime.UTC)
     db["responses"].insert_all(
         {
             "id": str(ULID()).lower(),

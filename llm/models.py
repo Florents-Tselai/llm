@@ -85,7 +85,7 @@ class Response(ABC):
 
     def __iter__(self) -> Iterator[str]:
         self._start = time.monotonic()
-        self._start_utcnow = datetime.datetime.utcnow()
+        self._start_utcnow = datetime.datetime.now(datetime.UTC)
         if self._done:
             yield from self._chunks
         for chunk in self.model.execute(

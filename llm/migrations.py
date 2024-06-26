@@ -13,7 +13,7 @@ def migrate(db):
         if name not in already_applied:
             fn(db)
             db["_llm_migrations"].insert(
-                {"name": name, "applied_at": str(datetime.datetime.utcnow())}
+                {"name": name, "applied_at": str(datetime.datetime.now(datetime.UTC))}
             )
             already_applied.add(name)
 
